@@ -24,7 +24,7 @@
       rev: 1.0.0
       hooks:
       - id: unittest
-        args: ["tests"] # Suppose all test files are in the tests directory
+        args: ["discover", "-s", "tests"] # Suppose all test files are in the tests directory
     ```
 
     You can use either `pytest` or `unittest` as needed.
