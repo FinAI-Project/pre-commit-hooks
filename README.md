@@ -65,6 +65,20 @@ This project provides a set of Git pre-commit hooks that can be used to enforce 
         git commit -m "Update pre-commit-hooks submodule to latest version"
         ```
 
+    #### Option3: Submodule already exists in Your Project
+
+    1.  Initialize submodules
+
+        ```sh
+        git submodule update --init
+        ```
+
+    2.  Set the Git hooks path to the `.githooks` directory:
+
+        ```sh
+        git config core.hooksPath .githooks
+        ```
+
 3.  (Optional) Customize `.pre-commit-config.yaml`
 
     If you want to customize the pre-commit hooks, you can create a `.pre-commit-config.yaml` file in the root directory of your project. This file will override the default configuration provided by the `pre-commit-hooks` repository.
