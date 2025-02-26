@@ -3,6 +3,21 @@
 # ID: 138fd403232d2ddd5efb44317e38bf03
 
 # start templated
+if [ -f conda.env ]; then
+    source conda.env
+    if [ -n "$PRE_COMMIT_CONDA_ENV" ] && [ "$PRE_COMMIT_CONDA_ENV" != "$CONDA_DEFAULT_ENV" ]; then
+        if ! conda --version >/dev/null 2>&1; then
+            if [ -n "$PRE_COMMIT_CONDA_EXE" ] && [ -x "$PRE_COMMIT_CONDA_EXE" ]; then
+                "$PRE_COMMIT_CONDA_EXE" init bash
+                source ~/.bash_profile 
+            else
+                >&2 echo "Error: PRE_COMMIT_CONDA_EXE is not set or not executable."
+                exit 1
+            fi
+        fi
+        conda activate "$PRE_COMMIT_CONDA_ENV"
+    fi
+fi
 for PYTHON_BIN in python python3; do
     if $PYTHON_BIN --version >/dev/null 2>&1; then
         INSTALL_PYTHON=$(which $PYTHON_BIN)
