@@ -1,5 +1,5 @@
 repos:
 - repo: https://github.com/FinAI-Project/pre-commit-hooks
-  rev: 1.0.0
+  rev: 1.0.1
   hooks:
   - id: pytest
